@@ -63,6 +63,37 @@ SELECT * FROM companies;
 select * from companies where number_of_employees =(select min(number_of_employees) from companies);
 
 
+-- 1. Örnek: companies tablosundan en yüksek ikinci number_of_employees değeri 
+--           olan company ve number_of_employees değerlerini çağırın.
+
+-- 1.YOL : Offset - Fetch Next ile cozumu
+select company,number_of_employees 
+from companies
+Order by number_of_employees desc 
+offset 1 row
+fetch next 1 row only
+
+-- 2.YOL : Subquery ile cozumu 
+select company,number_of_employees 
+from companies
+where number_of_employees =(select max(number_of_employees) from companies
+where number_of_employees < (select max(number_of_employees) from companies));
+
+
+-- //1. Örnek: number_of_employees değeri ortalama çalışan sayısından az olan 
+--             number_of_employees değerlerini 16000 olarak UPDATE edin.
+UPDATE companies 
+Set number_of_employees = 16000
+where number_of_employees < (select avg(number_of_employees) from companies);
+
+
+
+
+
+
+
+
+
 
 
 
