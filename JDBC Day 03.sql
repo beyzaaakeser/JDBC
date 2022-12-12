@@ -24,7 +24,7 @@ where company = 'IBM';
 
 
 
-Create Function or Replace toplamaF(x Numeric ,y NUMERIC )
+Create or Replace  Function toplamaF(x Numeric ,y NUMERIC )
 returns NUMERIC 
 Language plpgsql
 AS 
