@@ -1,0 +1,1 @@
+select created_by from room;
